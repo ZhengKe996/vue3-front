@@ -13,6 +13,7 @@
 
       <!-- 汉堡按钮 -->
       <li
+        @click="onShowPopup"
         class="fixed top-0 right-[-1px] h-4 px-1 flex items-center bg-white z-20 shadow-l-white"
       >
         <m-svg-icon name="hamburger" class="w-1.5 h-1.5"></m-svg-icon>
@@ -30,13 +31,16 @@
         {{ item.name }}
       </li>
     </ul>
+    <m-popup v-model="isVisable">
+      <menu-vue :categorys="data" @onItemClick="onItemClick" />
+    </m-popup>
   </div>
 </template>
 
 <script setup>
 import { onBeforeUpdate, ref, watch } from "vue";
 import { useScroll } from "@vueuse/core";
-
+import MenuVue from "@/component/MenuVue";
 defineProps({
   data: {
     type: Array,
@@ -81,5 +85,13 @@ watch(currentCategoryIndex, (value) => {
 // item click
 const onItemClick = (index) => {
   currentCategoryIndex.value = index;
+  isVisable.value = false;
+};
+
+// 控制 popup 展示
+const isVisable = ref(false);
+
+const onShowPopup = () => {
+  isVisable.value = true;
 };
 </script>
