@@ -22,6 +22,11 @@
         class="opacity-0 h-2 w-[1px] absolute translate-y-[-50%] top-[50%] right-[62px] duration-500 bg-zinc-200 group-hover:opacity-100"
       ></div>
       <!-- TODO: 通用组件 -->
+      <m-button
+        icon="search"
+        class="absolute translate-y-[-50%] top-[50%] right-1.5 rounded-full"
+        iconColor="#ffffff"
+      ></m-button>
     </div>
     <!-- 下拉区 -->
     <transition name="slide">

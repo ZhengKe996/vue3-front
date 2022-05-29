@@ -7,6 +7,7 @@
         'active:scale-105': isActiveAnim,
       },
     ]"
+    @click.stop="onBtnClick"
   >
     <m-svg-icon v-if="loading" name="loading" class="w-2 h-2 animate-spin mr-1">
     </m-svg-icon>
@@ -27,6 +28,7 @@
 
 <script>
 import { computed } from "vue";
+const EMITS_CLICK = "click";
 // 1. 构建 type 风格可选项 size 大小可选项
 const typeEnum = {
   primary: "text-white bg-zinc-800 hover: bg-zinc-900 active:bg-zinc-800",
@@ -105,6 +107,11 @@ const sizeKey = computed(() =>
 );
 // 4. 依据当前数据 实现视图
 // 5. 处理点击事件
+const emits = defineEmits([EMITS_CLICK]);
+const onBtnClick = () => {
+  if (props.loading) return;
+  emits(EMITS_CLICK);
+};
 </script>
 
 <style lang="scss" scoped></style>
