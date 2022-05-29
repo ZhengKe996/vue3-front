@@ -1,6 +1,6 @@
 <template>
   <div
-    class="group relative p-0.5 rounded-xl border-white duration-500 hover:bg-red-100/40"
+    class="group relative p-0.5 rounded-xl border-white duration-500 hover:bg-blue-100/40"
   >
     <div class="">
       <m-svg-icon
@@ -10,7 +10,7 @@
       />
 
       <input
-        class="block w-full h-[44px] pl-4 outline-0 bg-zinc-100 caret-zinc-400 duration-500 rounded-xl text-zinc-900 tracking-wide font-semibold border border-zinc-100 focus:border-red-300 text-sm group-hover:bg-white group-hover:border-zinc-200"
+        class="block w-full h-[44px] pl-4 outline-0 bg-zinc-100 caret-zinc-400 duration-500 rounded-xl text-zinc-900 tracking-wide font-semibold border border-zinc-100 focus:border-blue-300 text-sm group-hover:bg-white group-hover:border-zinc-200"
         placeholder="搜索"
         type="text"
       />
