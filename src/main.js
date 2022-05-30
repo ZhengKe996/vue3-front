@@ -6,11 +6,13 @@ import router from "./router";
 import "./styles/index.scss";
 import mLibs from "@/libs";
 
+import store from "./store";
 // 2. 注册 svg-icons
 import "virtual:svg-icons-register";
 
 useREM();
 const app = createApp(App);
+app.use(store);
 app.use(router);
 app.use(mLibs);
 app.mount("#app");
