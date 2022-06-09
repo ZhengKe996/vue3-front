@@ -11,7 +11,7 @@
         ref="contentTarget"
         v-show="isViable"
         :style="contentStyle"
-        class="absolute p-1 z-20 bg-white border rounded-md"
+        class="absolute p-1 z-20 bg-white border rounded-md dark:bg-zinc-900 dark:border-zinc-700"
       >
         <!-- 匿名插槽: 弹出层视图中展示的内容 -->
         <slot></slot>
