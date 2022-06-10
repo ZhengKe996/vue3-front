@@ -26,9 +26,22 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "waterfall",
+};
+</script>
+
 <script setup>
-import { computed, nextTick, onMounted, ref, watch } from "vue";
-import { getImgElements, getAllImg, onComplateImgs } from "./utils";
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
+import {
+  getImgElements,
+  getAllImg,
+  onComplateImgs,
+  getMinHeightColumn,
+  getMinHeight,
+  getMaxHeight,
+} from "./utils";
 const props = defineProps({
   // 数据源
   data: {
@@ -79,8 +92,10 @@ const useColumnHeightObj = () => {
 
 // 容器实例
 const containerTarget = ref(null);
+
 // 容器总宽度 不包含 padding margin border
 const containerWidth = ref(0);
+
 // 容器左边距，计算 item 的 left
 const containerLeft = ref(0);
 /**
@@ -172,7 +187,66 @@ const useItemHeight = () => {
 
 // 渲染位置
 const useItemLocation = () => {
-  console.log(itemHeights);
+  // 遍历数据源
+  props.data.forEach((item, index) => {
+    // 避免重复运算
+    if (item._style) {
+      return;
+    }
+    // 生成 style
+    item._style = {};
+
+    // left
+    item._style.left = getItemLeft();
+
+    // top
+    item._style.top = getItemTop();
+
+    // 指定列高度自增
+    increasingHeight(index);
+  });
+
+  // 指定容器的高度
+  containerHeight.value = getMaxHeight(columnHeightObj.value);
+};
+
+/**
+ * 在组件销毁时,清楚所有 _style
+ */
+onUnmounted(() => {
+  props.data.forEach((item) => {
+    delete item._style;
+  });
+});
+
+/**
+ * 返回下一个 item 的 left
+ */
+const getItemLeft = () => {
+  // 拿到最小宽度的列
+  const column = getMinHeightColumn(columnHeightObj.value);
+  return (
+    column * (columnWidth.value + props.columnSpacing) + containerLeft.value
+  );
+};
+
+/**
+ * 返回下一个 item 的 top
+ */
+const getItemTop = () => {
+  return getMinHeight(columnHeightObj.value);
+};
+
+/**
+ * 指定列高度自增
+ */
+const increasingHeight = (index) => {
+  // 最小高度所在列
+  const minHeightColumn = getMinHeightColumn(columnHeightObj.value);
+
+  // 使该列自增
+  columnHeightObj.value[minHeightColumn] +=
+    itemHeights[index] + props.rowSpacing;
 };
 
 /**
@@ -182,6 +256,12 @@ watch(
   () => props.data,
   (newValue) => {
     nextTick(() => {
+      // 第一次获取数据时，构建高度记录容器
+      const resetColumnHeight = newValue.every((item) => !item._style);
+      if (resetColumnHeight) {
+        // 构建高度记录容器
+        useColumnHeightObj();
+      }
       if (props.picturePreReading) {
         waitImgComplate();
       } else {
