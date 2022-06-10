@@ -5,6 +5,7 @@
         class="relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 outline-none hover:bg-zinc-100 dark:hover:bg-zinc-900"
       >
         <img
+          v-lazy
           class="w-3 h-3 rounded-sm"
           src="https://zhengke-img.oss-cn-hangzhou.aliyuncs.com/user.jpg"
         />

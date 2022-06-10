@@ -7,6 +7,7 @@ import "./styles/index.scss";
 import mLibs from "@/libs";
 import useTheme from "./utils/theme";
 import store from "./store";
+import mDirectives from "./directives";
 // 2. 注册 svg-icons
 import "virtual:svg-icons-register";
 
@@ -16,4 +17,5 @@ const app = createApp(App);
 app.use(store);
 app.use(router);
 app.use(mLibs);
+app.use(mDirectives);
 app.mount("#app");

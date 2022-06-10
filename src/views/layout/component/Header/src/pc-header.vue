@@ -4,6 +4,7 @@
   >
     <div class="flex items-center">
       <img
+        v-lazy
         class="h-4 cursor-pointer mr-2"
         src="https://zhengke-img.oss-cn-hangzhou.aliyuncs.com/image-light.png"
         alt=""
