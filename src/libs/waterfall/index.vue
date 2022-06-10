@@ -27,8 +27,8 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
-
+import { computed, nextTick, onMounted, ref, watch } from "vue";
+import { getImgElements, getAllImg, onComplateImgs } from "./utils";
 const props = defineProps({
   // 数据源
   data: {
@@ -125,4 +125,73 @@ onMounted(() => {
   useColumnWidth();
   console.log(columnWidth.value);
 });
+
+// item 高度集合
+let itemHeights = [];
+
+/**
+ * 监听图片加载完成 需要图片预加载
+ * */
+const waitImgComplate = () => {
+  itemHeights = [];
+
+  // 拿到所有的元素
+  let itemElements = [...document.getElementsByClassName("m-waterfall-item")];
+
+  // 获取到元素的 img 标签
+  const imgElements = getImgElements(itemElements);
+
+  // 获取所有 img标签的图片
+  const allImgs = getAllImg(imgElements);
+
+  // 等待图片加载完成
+  onComplateImgs(allImgs).then(() => {
+    // 图片加载完成
+    itemElements.forEach((el) => {
+      itemHeights.push(el.offsetHeight);
+    });
+    // 渲染位置
+    useItemLocation();
+  });
+};
+
+/**
+ * 不需要图片预加载
+ */
+const useItemHeight = () => {
+  itemHeights = [];
+  // 拿到所有的元素
+  let itemElements = [...document.getElementsByClassName("m-waterfall-item")];
+
+  // 计算 item 高度
+  itemElements.forEach((el) => {
+    itemHeights.push(el.offsetHeight);
+  });
+  useItemLocation();
+};
+
+// 渲染位置
+const useItemLocation = () => {
+  console.log(itemHeights);
+};
+
+/**
+ * 触发计算
+ */
+watch(
+  () => props.data,
+  (newValue) => {
+    nextTick(() => {
+      if (props.picturePreReading) {
+        waitImgComplate();
+      } else {
+        useItemHeight();
+      }
+    });
+  },
+  {
+    deep: true,
+    immediate: true,
+  }
+);
 </script>
