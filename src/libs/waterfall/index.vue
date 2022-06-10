@@ -138,7 +138,6 @@ const useColumnWidth = () => {
 onMounted(() => {
   // 计算列宽
   useColumnWidth();
-  console.log(columnWidth.value);
 });
 
 // item 高度集合
@@ -272,6 +271,36 @@ watch(
   {
     deep: true,
     immediate: true,
+  }
+);
+
+/**
+ * 重新构建瀑布流
+ */
+const reset = () => {
+  setTimeout(() => {
+    // 重新计算列宽
+    useColumnWidth();
+    // 重置所有的定位数据
+    props.data.forEach((item) => {
+      item._style = null;
+    });
+  }, 200);
+};
+
+/**
+ * 监听列数变化
+ */
+watch(
+  () => props.column,
+  () => {
+    if (props.picturePreReading) {
+      columnWidth.value = 0;
+      // 数据改变后 视图变化后的回调
+      reset();
+    } else {
+      reset();
+    }
   }
 );
 </script>
