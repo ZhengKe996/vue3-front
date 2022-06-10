@@ -10,28 +10,7 @@ export const getPexlesList = (data) => [
     width: 3000,
     height: 2000,
   },
-  {
-    author: "Quang Nguyen Vinh",
-    avatar:
-      "https://images.pexels.com/users/avatars/222549/quang-nguyen-vinh-611.jpeg?auto=compress&fit=crop&h=60&w=60",
-    id: 4078071,
-    photo:
-      "https://images.pexels.com/photos/4078071/pexels-photo-4078071.jpeg?auto=compress&cs=tinysrgb&h=130",
-    title: "图片来自Pexels",
-    width: 7713,
-    height: 5145,
-  },
-  {
-    author: "SenuScape",
-    avatar:
-      "https://images.pexels.com/users/avatars/728360/senuscape-353.jpeg?auto=compress&fit=crop&h=60&w=60",
-    id: 1633689,
-    photo:
-      "https://images.pexels.com/photos/1633689/pexels-photo-1633689.jpeg?auto=compress&cs=tinysrgb&h=130",
-    title: "木码头附近的灰色岩石",
-    width: 5694,
-    height: 3800,
-  },
+
   {
     author: "Pok Rie",
     avatar:
@@ -108,6 +87,28 @@ export const getPexlesList = (data) => [
     title: "日落期间海滨摄影",
     width: 4528,
     height: 2910,
+  },
+  {
+    author: "Quang Nguyen Vinh",
+    avatar:
+      "https://images.pexels.com/users/avatars/222549/quang-nguyen-vinh-611.jpeg?auto=compress&fit=crop&h=60&w=60",
+    id: 4078071,
+    photo:
+      "https://images.pexels.com/photos/4078071/pexels-photo-4078071.jpeg?auto=compress&cs=tinysrgb&h=130",
+    title: "图片来自Pexels",
+    width: 7713,
+    height: 5145,
+  },
+  {
+    author: "SenuScape",
+    avatar:
+      "https://images.pexels.com/users/avatars/728360/senuscape-353.jpeg?auto=compress&fit=crop&h=60&w=60",
+    id: 1633689,
+    photo:
+      "https://images.pexels.com/photos/1633689/pexels-photo-1633689.jpeg?auto=compress&cs=tinysrgb&h=130",
+    title: "木码头附近的灰色岩石",
+    width: 5694,
+    height: 3800,
   },
   {
     author: "Quang Nguyen Vinh",

@@ -54,7 +54,7 @@ const getPexlesData = async () => {
     pexelsList.value.push(...res);
   }
   // 判断数据是否全部加载完成
-  if (pexelsList.value.length === res.length * 5) {
+  if (pexelsList.value.length === res.length * 10) {
     isFinished.value = true;
   }
   // 修改 loading 标记
