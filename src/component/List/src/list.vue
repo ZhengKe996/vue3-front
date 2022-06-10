@@ -48,7 +48,6 @@ const getPexlesData = async () => {
 
   // 触发接口
   const res = await getPexlesList(query);
-  console.log(res.length);
   if (query.page === 1) {
     pexelsList.value = res;
   } else {

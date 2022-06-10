@@ -6,7 +6,6 @@ export default {
     // 1. 暂存图片地址
     const imgSrc = el.src;
     el.src = "";
-    console.log(el.style);
 
     const { stop } = useIntersectionObserver(el, ([{ isIntersecting }]) => {
       if (isIntersecting) {
