@@ -25,6 +25,7 @@ const changeTheme = (theme) => {
       break;
     case THEME_DARK:
       themeClassName = "dark";
+      break;
     case THEME_SYSTEM:
       watchSystemThemeChange();
       themeClassName = matchMedia.matches ? "dark" : "light";

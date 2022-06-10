@@ -12,8 +12,8 @@
       >
         <m-svg-icon
           :name="isOpenCategory ? 'upward' : 'down'"
-          class="w-1 h-1"
-          fillClass="fill-zinc-900 dark:ill-zinc-300"
+          class="w-1.5 h-1.5"
+          fillClass="fill-zinc-900 dark:fill-zinc-300"
         ></m-svg-icon>
       </div>
       <li
