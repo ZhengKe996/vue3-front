@@ -132,17 +132,7 @@ export const getPexlesList = (data) => [
     width: 4752,
     height: 3168,
   },
-  {
-    author: "Haley Black",
-    avatar:
-      "https://images.pexels.com/users/avatars/1096796/haley-black-362.jpeg?auto=compress&fit=crop&h=60&w=60",
-    id: 12270357,
-    photo:
-      "https://images.pexels.com/photos/12270357/pexels-photo-12270357.jpeg?auto=compress&cs=tinysrgb&h=130",
-    title: "图片来自Pexels",
-    width: 2919,
-    height: 1935,
-  },
+
   {
     author: "Elena Rubtsova",
     avatar:
@@ -164,6 +154,17 @@ export const getPexlesList = (data) => [
     title: "图片来自Pexels",
     width: 4752,
     height: 3168,
+  },
+  {
+    author: "Haley Black",
+    avatar:
+      "https://images.pexels.com/users/avatars/1096796/haley-black-362.jpeg?auto=compress&fit=crop&h=60&w=60",
+    id: 12270357,
+    photo:
+      "https://images.pexels.com/photos/12270357/pexels-photo-12270357.jpeg?auto=compress&cs=tinysrgb&h=130",
+    title: "图片来自Pexels",
+    width: 2919,
+    height: 1935,
   },
   {
     author: "Ashleigh",
